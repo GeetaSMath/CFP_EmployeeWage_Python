@@ -1,15 +1,23 @@
 """Welcome to solve employee wage problem"""
 # imported random function
-#---UserCase one---
+#---UserCase two---
 # employee Attendance
 import random
 
-# created employeecheck variable
-# checking employee present or absent by using random function
-# using if condition finding employee present or absent
-employeeCheck = random.randrange(0, 2)
-if employeeCheck == 0:
-    print("employee is present")
+Emp_Rate_Per_Hour = 20
+Full_Time = 8
+
+Emp_Check = random.randrange(0, 2)
+
+# checking attendance
+if Emp_Check == 0:
+    Emp_Hour = Full_Time
 else:
-    print("employee is absent")
+    Emp_Hour = 0
+# calculating employee wage
+emp_wage = Emp_Rate_Per_Hour * Emp_Hour
+print(f"Monthly Employee Wage is :{emp_wage}")
+
+
+
 
