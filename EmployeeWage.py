@@ -1,27 +1,30 @@
-# imported random function
 import random
 
-# create Employee Class
+
 class EmployeeWage:
+    # constants
     FULL_TIME = 8
     PART_TIME = 4
 
-# created def function
-    def employee_monthly_wage(self, compnay, emp_rate_per_hour, working_day, working_hours):
+    def __init__(self, company, emp_rate_per_hour, working_day, working_hours):
+        self.company = company
+        self.emp_rate_per_hour = emp_rate_per_hour
+        self.working_day = working_day
+        self.working_hours = working_hours
+
+    def employee_monthly_wage(self):
         """
             desc: calculating monthly wage of employee
             return: monthly wage
-            passing parmaeters
         """
         working_days = 0
         total_emp_hour = 0
-# checking employee condition for day comparring employee hours and total working hours
-# passing three parameters
-        while working_days < working_day and total_emp_hour <= working_hours:
+
+        while working_days < self.working_day and total_emp_hour <= self.working_hours:
             working_days += 1
             emp_check = random.randrange(0, 3)
 
-            # checking full-time, part-time or absent
+            # checking full-timme, part-time or absent
             emp_hour = self.calculate_emp_hours(emp_check)
 
             total_emp_hour += emp_hour
@@ -30,15 +33,15 @@ class EmployeeWage:
                 total_emp_hour -= emp_hour
                 break
 
-        # calculating monthly wage of employee
-        emp_wage = self.calculate_emp_wage(emp_rate_per_hour, total_emp_hour)
-        print(f"Monthly Wage of a Employee is : {compnay} is : {emp_wage}")
+        # calculating monthly wage of employee0
+        emp_wage = self.calculate_emp_wage(self.emp_rate_per_hour, total_emp_hour)
+        print(f"Monthly Wage of a Employee in a {self.company} is : {emp_wage}")
 
     def calculate_emp_hours(self, emp_check):
         """
             desc: calculate daily hours of employee
             param: emp_check:
-            return: employee hour
+            return: employee hour(int value)
         """
         if emp_check == 0:
             return self.FULL_TIME
@@ -50,6 +53,8 @@ class EmployeeWage:
     def calculate_emp_wage(self, rate_per_hour, total_hour):
         """
             desc: calculating total employee wage
+            param1: rate_per_hour:
+            param2: total_hour:
             return: employee wage
         """
         employee_wage = rate_per_hour * total_hour
@@ -59,10 +64,12 @@ class EmployeeWage:
 if __name__ == '__main__':
     """
         Calling the calculate_monthly_wage function in EmployeeWage class
-        to calculate monthly wage of employee.
+        to calculate monthly wage of employee for multiple companies.
     """
-    emp_monthly_wage = EmployeeWage()
-# passing value of the parametes to calculate monthly wage os employee
+    deepComputeSoft = EmployeeWage("DeepComputeSoft", 20, 20, 10)
+    deepComputeSoft.employee_monthly_wage()
 
-    emp_monthly_wage.employee_monthly_wage("DeepComputeSoft", 40, 50, 100)
-    emp_monthly_wage.employee_monthly_wage("HP",40,60, 50)
+    HP = EmployeeWage("HP", 10, 34, 50)
+    HP.employee_monthly_wage()
+
+
