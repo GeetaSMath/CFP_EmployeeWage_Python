@@ -1,26 +1,27 @@
+# imported random function
 import random
 
 # create Employee Class
 class EmployeeWage:
-    # constants
-    EMP_RATE_PER_HOUR = 20
     FULL_TIME = 8
     PART_TIME = 4
-    WORKING_HOURS = 100
+
 # created def function
-    def employee_monthly_wage(self):
+    def employee_monthly_wage(self, compnay, emp_rate_per_hour, working_day, working_hours):
         """
             desc: calculating monthly wage of employee
             return: monthly wage
+            passing parmaeters
         """
         working_days = 0
         total_emp_hour = 0
-
-        while working_days < 20 and total_emp_hour <= self.WORKING_HOURS:
+# checking employee condition for day comparring employee hours and total working hours
+# passing three parameters
+        while working_days < working_day and total_emp_hour <= working_hours:
             working_days += 1
             emp_check = random.randrange(0, 3)
 
-            # checking full-timme, part-time or absent
+            # checking full-time, part-time or absent
             emp_hour = self.calculate_emp_hours(emp_check)
 
             total_emp_hour += emp_hour
@@ -30,8 +31,8 @@ class EmployeeWage:
                 break
 
         # calculating monthly wage of employee
-        emp_wage = self.calculate_emp_wage(self.EMP_RATE_PER_HOUR, total_emp_hour)
-        print(f"Monthly Wage of a Employee is : {emp_wage}")
+        emp_wage = self.calculate_emp_wage(emp_rate_per_hour, total_emp_hour)
+        print(f"Monthly Wage of a Employee is : {compnay} is : {emp_wage}")
 
     def calculate_emp_hours(self, emp_check):
         """
@@ -61,5 +62,7 @@ if __name__ == '__main__':
         to calculate monthly wage of employee.
     """
     emp_monthly_wage = EmployeeWage()
+# passing value of the parametes to calculate monthly wage os employee
 
-    emp_monthly_wage.employee_monthly_wage()
+    emp_monthly_wage.employee_monthly_wage("DeepComputeSoft", 40, 50, 100)
+    emp_monthly_wage.employee_monthly_wage("HP",40,60, 50)
